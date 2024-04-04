@@ -1,4 +1,48 @@
-.sidebar {
+.p-sidebar-mask {
+  .p-sidebar {
+    div {
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+
+      .close-sidebar-button {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .navigation-options {
+        div {
+          cursor: pointer;
+        }
+        div:hover {
+          border-radius: 4px;
+          background-color: lightgray;
+          transition: 0.25s;
+        }
+      }
+
+      .user-info {
+        .logout {
+          cursor: pointer;
+        }
+        .logout:hover {
+          border-radius: 4px;
+          background-color: lightgray;
+          transition: 0.25s;
+        }
+
+        .user-name {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+.sidebar-container {
   display: flex;
   position: absolute;
   bottom: 0;

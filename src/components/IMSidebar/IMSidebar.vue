@@ -1,42 +1,43 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar-container">
     <Sidebar v-model:visible="visible">
       <template #container="{ closeCallback }">
-        <div>
-          <div>
-            <span>
-              <Button
-                type="button"
-                @click="closeCallback"
-                icon="pi pi-times"
-                rounded
-                outlined
-                class="h-2rem w-2rem"
-                >X</Button
-              >
-            </span>
-          </div>
+        <div class="sidebar">
+          <span class="close-sidebar-button">
+            <Button
+              type="button"
+              @click="closeCallback"
+              icon="pi pi-times"
+              rounded
+              outlined
+            />
+          </span>
           <div class="navigation-options">
             <div>Home</div>
             <div>Product</div>
             <div>Order</div>
             <div>Manage User</div>
             <div>Settings</div>
-            <div>Log Out</div>
           </div>
           <div class="user-info">
-            <a v-if="user.access_token">
-              <Avatar :label="user?.firstName?.slice(0, 1)" shape="circle" />
-              <span>{{ user.firstName }} {{ user.lastName }}</span>
-            </a>
-            <a v-else>
+            <div v-if="user.access_token">
+              <div class="logout" @click="requestSignoutUser">Log Out</div>
+              <div class="user-name">
+                <Avatar
+                  :label="user.data.firstName?.slice(0, 1)"
+                  shape="circle"
+                />
+                <span>{{ user.data.firstName }} {{ user.data.lastName }}</span>
+              </div>
+            </div>
+            <div v-else>
               <Avatar icon="pi pi-user" shape="circle" />
               <span>
                 <span @click="toSignIn">Sign in</span>
                 or
                 <span @click="toSignUp">Sign up</span>
               </span>
-            </a>
+            </div>
           </div>
         </div>
       </template>
@@ -46,6 +47,7 @@
 </template>
 
 <script lang="ts">
+import { signOutUser } from "@/services/UserService";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -53,7 +55,7 @@ export default defineComponent({
   props: ["user"],
   data() {
     return {
-      visible: false,
+      visible: true,
     };
   },
   methods: {
@@ -63,6 +65,11 @@ export default defineComponent({
     },
     toSignUp() {
       this.$router.push("/register");
+      this.visible = false;
+    },
+    requestSignoutUser() {
+      signOutUser();
+      this.$router.push("/");
       this.visible = false;
     },
   },

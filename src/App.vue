@@ -24,8 +24,8 @@ export default defineComponent({
   methods: {
     async requestGetUser() {
       try {
-        const user = await getUser();
-        this.user = user;
+        const response = await getUser();
+        this.user = response;
       } catch (error) {
         console.log(error.response.data.message);
       }

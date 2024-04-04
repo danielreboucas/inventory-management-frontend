@@ -15,6 +15,10 @@ import Sidebar from "primevue/sidebar";
 import Avatar from "primevue/avatar";
 import Toast from "primevue/toast";
 import ToastService from "primevue/toastservice";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import ColumnGroup from "primevue/columngroup";
+import Row from "primevue/row";
 
 import IMSidebar from "./components/IMSidebar/IMSidebar.vue";
 
@@ -29,6 +33,10 @@ app.component("Checkbox", Checkbox);
 app.component("Sidebar", Sidebar);
 app.component("Avatar", Avatar);
 app.component("Toast", Toast);
+app.component("DataTable", DataTable);
+app.component("Column", Column);
+app.component("ColumnGroup", ColumnGroup);
+app.component("Row", Row);
 
 app.component("IMSidebar", IMSidebar);
 

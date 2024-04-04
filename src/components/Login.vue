@@ -47,12 +47,11 @@ export default defineComponent({
   methods: {
     async requestSignInUser() {
       try {
-        const user = await signInUser({
+        await signInUser({
           email: this.email,
           password: this.password,
         });
         this.$router.push("/home");
-        console.log("user", user);
       } catch (error: any) {
         console.log(error.response.data.message);
       }

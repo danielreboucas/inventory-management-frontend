@@ -55,7 +55,7 @@ export async function getUser() {
         Authorization: "Bearer " + user.access_token,
       },
     });
-    return response.data;
+    return { data: response.data, access_token: user.access_token };
   }
   return null;
 }
