@@ -1,30 +1,39 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div class="app">
+    <router-view :user="user" />
+    <IMSidebar v-show="user" :user="user" />
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { getUser } from "@/services/UserService";
+import { IMSidebar } from "@/components/IMSidebar/IMSidebar.vue";
+import { defineComponent } from "vue";
 
-nav {
-  padding: 30px;
+export default defineComponent({
+  name: "App",
+  components: { IMSidebar },
+  data() {
+    return {
+      user: {},
+    };
+  },
+  async mounted() {
+    await this.requestGetUser();
+  },
+  methods: {
+    async requestGetUser() {
+      try {
+        const user = await getUser();
+        this.user = user;
+      } catch (error) {
+        console.log(error.response.data.message);
+      }
+    },
+  },
+});
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style>
+@import url("assets/scss/layout.scss");
 </style>

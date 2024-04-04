@@ -1,0 +1,45 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background-image: linear-gradient(#3b3b3b, white);
+
+  .register {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    color: black;
+    padding: 80px;
+    gap: 16px;
+    margin-top: 180px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    h2 {
+      display: flex;
+      justify-content: center;
+    }
+
+    .register-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .register-button {
+      display: flex;
+      justify-content: center;
+    }
+
+    .signin {
+      font-size: 14px;
+      color: #0c1cab;
+      cursor: pointer;
+    }
+
+    .signin:hover {
+      text-decoration: underline;
+    }
+  }
+}
