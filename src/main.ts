@@ -22,6 +22,9 @@ import Row from "primevue/row";
 import Toolbar from "primevue/toolbar";
 import Dialog from "primevue/dialog";
 import InputNumber from "primevue/inputnumber";
+import ConfirmDialog from "primevue/confirmdialog";
+import ConfirmationService from "primevue/confirmationservice";
+import Tooltip from "primevue/tooltip";
 
 import IMSidebar from "./components/IMSidebar/IMSidebar.vue";
 
@@ -43,10 +46,13 @@ app.component("Row", Row);
 app.component("Toolbar", Toolbar);
 app.component("Dialog", Dialog);
 app.component("InputNumber", InputNumber);
+app.component("ConfirmDialog", ConfirmDialog);
 
 app.component("IMSidebar", IMSidebar);
 
+app.directive("tooltip", Tooltip);
 app.use(ToastService);
+app.use(ConfirmationService);
 app.use(store);
 app.use(router);
 app.mount("#app");

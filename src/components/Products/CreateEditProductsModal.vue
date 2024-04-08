@@ -17,20 +17,30 @@
         <label for="costPrice">Cost Price</label>
         <InputNumber
           v-model="product.costPrice"
+          v-tooltip.top="{
+            value: 'Cost Price needs to be lower than Selling Price',
+            disabled: isCostLowerThanSelling,
+          }"
           id="costPrice"
           mode="currency"
           currency="BRL"
           locale="br-BR"
+          :invalid="!isCostLowerThanSelling"
         />
       </div>
       <div class="input">
         <label for="sellingPrice">Selling Price</label>
         <InputNumber
           v-model="product.sellingPrice"
+          v-tooltip.top="{
+            value: 'Selling Price needs to be greater than Cost Price',
+            disabled: isCostLowerThanSelling,
+          }"
           id="sellingPrice"
           mode="currency"
           currency="BRL"
           locale="br-BR"
+          :invalid="!isCostLowerThanSelling"
         />
       </div>
       <div class="input">
@@ -51,7 +61,20 @@
         label="Create"
         @click="requestCreateProduct"
       />
-      <Button v-else type="button" label="Edit" @click="requestEditProduct" />
+      <div
+        v-else
+        v-tooltip.top="{
+          value: 'Selling Price needs to be greater than Cost Price',
+          disabled: isCostLowerThanSelling,
+        }"
+      >
+        <Button
+          type="button"
+          label="Edit"
+          :disabled="!isCostLowerThanSelling"
+          @click="requestEditProduct"
+        />
+      </div>
     </div>
   </Dialog>
 </template>
@@ -74,12 +97,15 @@ export default defineComponent({
     isEditing(): boolean {
       return this.productToEdit.name ? true : false;
     },
+    isCostLowerThanSelling(): boolean {
+      return this.product.costPrice <= this.product.sellingPrice ? true : false;
+    },
   },
   updated() {
     this.product = this.buildProduct(this.productToEdit);
   },
   methods: {
-    buildProduct(product: Product) {
+    buildProduct(product: Product): Product {
       return {
         id: product.id,
         name: product.name,

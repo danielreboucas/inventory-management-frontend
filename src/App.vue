@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <Toast />
+    <ConfirmDialog />
     <router-view :user="user" @get-user="requestGetUser" />
     <IMSidebar :user="user" />
   </div>

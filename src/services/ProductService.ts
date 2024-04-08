@@ -34,8 +34,8 @@ export async function editProduct(
   return response.data;
 }
 
-export async function deleteProduct(id: number): Promise<Product> {
-  const response = await api.delete(baseProductUrl + `/${id}`);
+export async function deleteProduct(ids: number[]): Promise<number> {
+  const response = await api.delete(baseProductUrl, { data: { ids: ids } });
 
   return response.data;
 }
