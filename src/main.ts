@@ -25,6 +25,8 @@ import InputNumber from "primevue/inputnumber";
 import ConfirmDialog from "primevue/confirmdialog";
 import ConfirmationService from "primevue/confirmationservice";
 import Tooltip from "primevue/tooltip";
+import IconField from "primevue/iconfield";
+import InputIcon from "primevue/inputicon";
 
 import IMSidebar from "./components/IMSidebar/IMSidebar.vue";
 
@@ -47,6 +49,8 @@ app.component("Toolbar", Toolbar);
 app.component("Dialog", Dialog);
 app.component("InputNumber", InputNumber);
 app.component("ConfirmDialog", ConfirmDialog);
+app.component("IconField", IconField);
+app.component("InputIcon", InputIcon);
 
 app.component("IMSidebar", IMSidebar);
 

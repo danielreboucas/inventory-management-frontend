@@ -1,6 +1,6 @@
 <template>
   <div class="list-products">
-    <h2>Products</h2>
+    <h1>Products</h1>
     <CreateEditProductsModal
       :visible="showCreateEditModal"
       :productToEdit="productToEdit"
@@ -10,23 +10,48 @@
       "
     />
     <DataTable
-      :value="products.data"
-      v-model:selection="selectedProducts"
       tableStyle="min-width: 50rem"
+      paginator
+      v-model:selection="selectedProducts"
+      v-model:filters="filters"
+      :rows="10"
+      :value="products.data"
     >
       <template #header>
-        <Button outlined icon="pi pi-plus" @click="openCreateModal">
-          Add New Product
-        </Button>
-        <Button
-          outlined
-          severity="danger"
-          icon="pi pi-plus"
-          :disabled="!selectedProducts || !selectedProducts.length"
-          @click="showConfirmDeleteMultiple"
-        >
-          Delete Products
-        </Button>
+        <div class="header">
+          <div class="search-input">
+            <IconField iconPosition="left">
+              <InputIcon>
+                <i class="pi pi-search" />
+              </InputIcon>
+              <InputText
+                size="small"
+                v-model="filters['global'].value"
+                placeholder="Search by Name"
+              />
+            </IconField>
+          </div>
+          <div class="header-buttons">
+            <Button
+              outlined
+              size="small"
+              icon="pi pi-plus"
+              @click="openCreateModal"
+            >
+              Add Product
+            </Button>
+            <Button
+              outlined
+              severity="danger"
+              size="small"
+              icon="pi pi-plus"
+              :disabled="!selectedProducts || !selectedProducts.length"
+              @click="showConfirmDeleteMultiple"
+            >
+              Delete Products
+            </Button>
+          </div>
+        </div>
       </template>
 
       <Column
@@ -35,11 +60,13 @@
         :exportable="false"
       />
 
-      <Column field="name" header="Name">
-        <template #body="{ data }"> {{ data.name }} </template>
+      <Column field="name" header="Name" style="min-width: 12rem"> </Column>
+      <Column field="costPrice" header="Cost Price">
+        <template #body="{ data }"> R$ {{ data.costPrice }}</template>
       </Column>
-      <Column field="costPrice" header="Cost Price (R$)" />
-      <Column field="sellingPrice" header="Selling Price (R$)" />
+      <Column field="sellingPrice" header="Selling Price">
+        <template #body="{ data }"> R$ {{ data.sellingPrice }}</template>
+      </Column>
       <Column field="quantity" header="Quantity" />
 
       <Column :exportable="false" style="min-width: 8rem">
@@ -69,6 +96,7 @@ import { defineComponent } from "vue";
 import { deleteProduct, getAllProducts } from "@/services/ProductService";
 import Product from "@/types/Product";
 import CreateEditProductsModal from "./CreateEditProductsModal.vue";
+import { FilterMatchMode } from "primevue/api";
 
 export default defineComponent({
   name: "ListProducts",
@@ -83,6 +111,9 @@ export default defineComponent({
       productToEdit: {} as Product,
       selectedProducts: [] as Product[],
       showCreateEditModal: false,
+      filters: {
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      },
     };
   },
   async created() {
