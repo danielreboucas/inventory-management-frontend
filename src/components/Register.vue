@@ -56,10 +56,21 @@ export default defineComponent({
           firstName: this.firstName,
           lastName: this.lastName,
         });
+        this.$toast.add({
+          severity: "success",
+          summary: "Success",
+          detail: "Account created succesfully",
+          life: 5000,
+        });
         this.$router.push("/login");
-        console.log("user", user);
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        this.$toast.add({
+          severity: "error",
+          summary: "Error",
+          detail: error.response.data.message,
+
+          life: 5000,
+        });
       }
     },
   },

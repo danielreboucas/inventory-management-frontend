@@ -53,9 +53,20 @@ export default defineComponent({
           password: this.password,
         });
         this.$emit("get-user");
+        this.$toast.add({
+          severity: "success",
+          summary: "Success",
+          detail: "Successfully logged in",
+          life: 5000,
+        });
         this.$router.push("/home");
       } catch (error: any) {
-        console.log(error.response.data.message);
+        this.$toast.add({
+          severity: "error",
+          summary: "Error",
+          detail: error.response.data.message,
+          life: 5000,
+        });
       }
     },
     moveToRegisterPage() {
