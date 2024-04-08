@@ -1,7 +1,8 @@
 <template>
   <div class="app">
-    <router-view :user="user" />
-    <IMSidebar v-show="user" :user="user" />
+    <Toast />
+    <router-view :user="user" @get-user="requestGetUser" />
+    <IMSidebar :user="user" />
   </div>
 </template>
 
@@ -17,9 +18,6 @@ export default defineComponent({
     return {
       user: {},
     };
-  },
-  async mounted() {
-    await this.requestGetUser();
   },
   methods: {
     async requestGetUser() {

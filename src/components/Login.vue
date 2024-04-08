@@ -37,6 +37,7 @@ import { signInUser } from "../services/UserService";
 export default defineComponent({
   name: "Login",
   props: ["user"],
+  emits: ["get-user"],
   data() {
     return {
       rememberMe: false,
@@ -51,6 +52,7 @@ export default defineComponent({
           email: this.email,
           password: this.password,
         });
+        this.$emit("get-user");
         this.$router.push("/home");
       } catch (error: any) {
         console.log(error.response.data.message);

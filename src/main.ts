@@ -19,6 +19,8 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import ColumnGroup from "primevue/columngroup";
 import Row from "primevue/row";
+import Toolbar from "primevue/toolbar";
+import Dialog from "primevue/dialog";
 
 import IMSidebar from "./components/IMSidebar/IMSidebar.vue";
 
@@ -37,6 +39,8 @@ app.component("DataTable", DataTable);
 app.component("Column", Column);
 app.component("ColumnGroup", ColumnGroup);
 app.component("Row", Row);
+app.component("Toolbar", Toolbar);
+app.component("Dialog", Dialog);
 
 app.component("IMSidebar", IMSidebar);
 

@@ -13,11 +13,11 @@
             />
           </span>
           <div class="navigation-options">
-            <div>Home</div>
-            <div>Product</div>
-            <div>Order</div>
-            <div>Manage User</div>
-            <div>Settings</div>
+            <router-link to="/home">Home</router-link>
+            <router-link to="/product">Product</router-link>
+            <router-link to="/order">Order</router-link>
+            <router-link to="/manage">Manage User</router-link>
+            <router-link to="/settings">Settings</router-link>
           </div>
           <div class="user-info">
             <div v-if="user.access_token">
@@ -55,7 +55,7 @@ export default defineComponent({
   props: ["user"],
   data() {
     return {
-      visible: true,
+      visible: false,
     };
   },
   methods: {

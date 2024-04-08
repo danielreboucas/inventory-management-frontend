@@ -1,10 +1,10 @@
+import User from "@/types/User";
 import api from "./api";
 const baseAuthUrl = "auth";
 
-export async function signInUser(user: {
-  email: string;
-  password: string;
-}): Promise<{ data: []; access_token: string }> {
+export async function signInUser(
+  user: User
+): Promise<{ data: []; access_token: string }> {
   const response = await api.post(baseAuthUrl + "/signin", {
     email: user.email,
     password: user.password,
@@ -17,12 +17,9 @@ export async function signInUser(user: {
   return response.data;
 }
 
-export async function signUpUser(user: {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-}): Promise<{ data: []; access_token: string }> {
+export async function signUpUser(
+  user: User
+): Promise<{ data: []; access_token: string }> {
   const response = await api.post(baseAuthUrl + "/signup", {
     email: user.email,
     password: user.password,
