@@ -21,6 +21,7 @@ import ColumnGroup from "primevue/columngroup";
 import Row from "primevue/row";
 import Toolbar from "primevue/toolbar";
 import Dialog from "primevue/dialog";
+import InputNumber from "primevue/inputnumber";
 
 import IMSidebar from "./components/IMSidebar/IMSidebar.vue";
 
@@ -41,6 +42,7 @@ app.component("ColumnGroup", ColumnGroup);
 app.component("Row", Row);
 app.component("Toolbar", Toolbar);
 app.component("Dialog", Dialog);
+app.component("InputNumber", InputNumber);
 
 app.component("IMSidebar", IMSidebar);
 

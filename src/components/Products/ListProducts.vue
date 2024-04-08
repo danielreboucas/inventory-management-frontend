@@ -1,9 +1,9 @@
 <template>
   <div class="list-products">
     <h2>Products</h2>
-    <CreateProductsModal
-      id="createModal"
+    <CreateEditProductsModal
       :visible="showCreateModal"
+      :productToEdit="productToEdit"
       @close-create-modal="
         showCreateModal = false;
         requestGetAllProducts();
@@ -15,7 +15,7 @@
       tableStyle="min-width: 50rem"
     >
       <template #header>
-        <Button outlined icon="pi pi-plus" @click="showCreateModal = true">
+        <Button outlined icon="pi pi-plus" @click="openCreateModal">
           Add New Product
         </Button>
         <Button
@@ -35,9 +35,11 @@
         :exportable="false"
       />
 
-      <Column field="name" header="Name" />
-      <Column field="costPrice" header="Cost Price" />
-      <Column field="sellingPrice" header="Selling Price" />
+      <Column field="name" header="Name">
+        <template #body="{ data }"> {{ data.name }} </template>
+      </Column>
+      <Column field="costPrice" header="Cost Price (R$)" />
+      <Column field="sellingPrice" header="Selling Price (R$)" />
       <Column field="quantity" header="Quantity" />
 
       <Column :exportable="false" style="min-width: 8rem">
@@ -54,7 +56,7 @@
             outlined
             rounded
             severity="danger"
-            @click="openDeleteModal(slotProps.data)"
+            @click="openEditModal(slotProps.data)"
           />
         </template>
       </Column>
@@ -66,11 +68,11 @@
 import { defineComponent } from "vue";
 import { getAllProducts } from "@/services/ProductService";
 import Product from "@/types/Product";
-import CreateProductsModal from "./CreateProductsModal.vue";
+import CreateEditProductsModal from "./CreateEditProductsModal.vue";
 
 export default defineComponent({
   name: "ListProducts",
-  components: { CreateProductsModal },
+  components: { CreateEditProductsModal },
   props: ["user"],
   data() {
     return {
@@ -78,8 +80,8 @@ export default defineComponent({
         data: [] as Product[],
         total: 0,
       },
+      productToEdit: {} as Product,
       selectedProducts: [] as Product[],
-      createModal: {},
       showCreateModal: false,
       showEditModal: false,
       showDeleteModal: false,
@@ -90,7 +92,19 @@ export default defineComponent({
   },
   methods: {
     openEditModal(product: Product) {
-      this.showDeleteModal = true;
+      this.productToEdit = product;
+      this.showCreateModal = true;
+    },
+    openCreateModal() {
+      this.productToEdit = {
+        id: 0,
+        name: "",
+        costPrice: 0,
+        sellingPrice: 0,
+        quantity: 0,
+        userId: 1,
+      };
+      this.showCreateModal = true;
     },
     async requestGetAllProducts(): Promise<void> {
       try {

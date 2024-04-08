@@ -25,7 +25,8 @@ export async function getAllProducts(): Promise<{
 }
 
 export async function editProduct(
-  id: number,
+  // TODO: remove undefined
+  id: number | undefined,
   product: Product
 ): Promise<Product> {
   const response = await api.patch(baseProductUrl + `/${id}`, product);
