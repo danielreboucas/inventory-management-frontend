@@ -37,10 +37,10 @@ export function signOutUser() {
 export function authHeader() {
   const user = JSON.parse(localStorage.getItem("user") || '""');
 
-  if (user && user.accessToken) {
-    return { "x-access-token": "Bearer " + user.accessToken };
+  if (user.user && user.access_token) {
+    return "Bearer " + user.access_token;
   } else {
-    return {};
+    return "";
   }
 }
 
