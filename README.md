@@ -6,7 +6,8 @@ The Inventory Management System project is a web application built with Vue.js 3
 ## Features
 - Data Consumption: Integrates with a backend API built with Nest.js to fetch and manipulate inventory data securely.
 - User Interface: Provides a responsive and intuitive user interface for performing inventory management tasks, designed with Vue.js 3 and SCSS to ensure a modern and visually appealing experience.
-- Login: Implements a login feature using JSON Web Token (JWT) for secure authorization and authentication, ensuring only authenticated users can access and manipulate inventory data.
+- Management Modules: Allows users to manage Suppliers, Orders, Sales, and Products seamlessly within the application, providing comprehensive control over inventory-related processes.
+- Login/Register: Implements a login feature using JSON Web Token (JWT) for secure authorization and authentication, ensuring only authenticated users can access and manipulate inventory data.
 - Responsive Design: Ensures a seamless user experience across various devices and screen sizes, allowing users to access the application from desktops, laptops, tablets, and mobile devices.
 - Testing: (TODO) Implements unit tests with Jest and TypeScript to ensure the reliability and robustness of the application's functionalities.
 - Dashboard: (TODO) Plan to add a dashboard feature for visualizing product inventory, sales data, and profits. This dashboard will provide users with insightful visualizations and analytics to help them make informed decisions about their inventory management strategies.
