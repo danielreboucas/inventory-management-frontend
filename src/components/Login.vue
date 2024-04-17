@@ -9,6 +9,7 @@
           placeholder="Password"
           toggleMask
           :feedback="false"
+          @keydown.enter="requestSignInUser"
         />
       </div>
 

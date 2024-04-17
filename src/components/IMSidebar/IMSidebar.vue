@@ -14,8 +14,9 @@
           </span>
           <div class="navigation-options">
             <router-link to="/home">Home</router-link>
-            <router-link to="/product">Product</router-link>
-            <router-link to="/order">Order</router-link>
+            <router-link to="/product">Products</router-link>
+            <router-link to="/supplier">Suppliers</router-link>
+            <router-link to="/order">Orders</router-link>
             <router-link to="/manage">Manage User</router-link>
             <router-link to="/settings">Settings</router-link>
           </div>

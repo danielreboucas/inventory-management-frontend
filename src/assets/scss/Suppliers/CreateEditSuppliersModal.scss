@@ -1,0 +1,25 @@
+.create-edit-supplier-modal {
+    .p-dialog-content {
+        .inputs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+            
+            .input {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                label {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 12px;
+        }
+    }
+}
