@@ -18,12 +18,24 @@
         <InputText v-model="supplier.contactInfo" id="contactInfo" />
       </div>
       <div class="input">
-        <label for="sellingPrice">Selling Price</label>
-        <InputNumber id="sellingPrice" />
+        <label for="products">Products</label>
+        <MultiSelect
+          id="products"
+          filter
+          optionLabel="name"
+          v-model="selectedProducts"
+          :options="products"
+        />
       </div>
       <div class="input">
-        <label for="quantity">Quantity</label>
-        <InputNumber id="quantity" />
+        <label for="orders">Orders</label>
+        <MultiSelect
+          id="orders"
+          filter
+          optionLabel="name"
+          v-model="selectedOrders"
+          :options="orders"
+        />
       </div>
     </div>
     <div class="buttons-container">
@@ -47,7 +59,11 @@
 </template>
 
 <script lang="ts">
+import { getAllProducts } from "@/services/ProductService";
+import { getAllOrders } from "@/services/OrderService";
 import { createSupplier, editSupplier } from "@/services/SupplierService";
+import Order from "@/types/Order";
+import Product from "@/types/Product";
 import Supplier from "@/types/Supplier";
 import { defineComponent } from "vue";
 
@@ -58,6 +74,10 @@ export default defineComponent({
   data() {
     return {
       supplier: {} as Supplier,
+      selectedProducts: [] as Product[],
+      products: [] as Product[],
+      selectedOrders: [] as Order[],
+      orders: [] as Order[],
     };
   },
   computed: {
@@ -65,13 +85,15 @@ export default defineComponent({
       return this.supplierToEdit?.name ? true : false;
     },
   },
-  updated() {
+  async updated() {
+    await this.requestGetAllProducts();
+    await this.requestGetAllOrders();
     this.supplier = this.buildSupplier(this.supplierToEdit);
+    this.selectedProducts = this.buildSupplier(this.supplierToEdit).products;
+    this.selectedOrders = this.buildSupplier(this.supplierToEdit).orders;
   },
   methods: {
     buildSupplier(supplier: Supplier): Supplier {
-      console.log(supplier);
-
       return {
         id: supplier.id,
         name: supplier.name,
@@ -95,8 +117,8 @@ export default defineComponent({
         await createSupplier({
           name: this.supplier.name,
           contactInfo: this.supplier.contactInfo,
-          products: this.supplier.products,
-          orders: this.supplier.orders,
+          products: this.selectedProducts,
+          orders: this.selectedOrders,
         });
         this.$emit("close-create-modal");
         this.$toast.add({
@@ -119,8 +141,8 @@ export default defineComponent({
         const newSupplier = await editSupplier(this.supplier.id, {
           name: this.supplier.name,
           contactInfo: this.supplier.contactInfo,
-          products: this.supplier.products,
-          orders: this.supplier.orders,
+          products: this.selectedProducts,
+          orders: this.selectedOrders,
         });
         this.$emit("close-create-modal", newSupplier);
         this.$toast.add({
@@ -129,6 +151,32 @@ export default defineComponent({
           detail: `${this.supplier.name} edited successfully`,
           life: 5000,
         });
+      } catch (error: any) {
+        this.$toast.add({
+          severity: "error",
+          summary: "Error",
+          detail: error.response.data.message,
+          life: 5000,
+        });
+      }
+    },
+    async requestGetAllProducts(): Promise<void> {
+      try {
+        const products = await getAllProducts();
+        this.products = products.data;
+      } catch (error: any) {
+        this.$toast.add({
+          severity: "error",
+          summary: "Error",
+          detail: error.response.data.message,
+          life: 5000,
+        });
+      }
+    },
+    async requestGetAllOrders(): Promise<void> {
+      try {
+        const orders = await getAllOrders();
+        this.orders = orders.data;
       } catch (error: any) {
         this.$toast.add({
           severity: "error",

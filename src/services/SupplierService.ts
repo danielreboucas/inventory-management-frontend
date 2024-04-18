@@ -20,7 +20,6 @@ export async function getAllSuppliers(): Promise<{
   total: number;
 }> {
   const response = await api.get(baseSupplierUrl);
-  console.log(response.data);
 
   return response.data;
 }
