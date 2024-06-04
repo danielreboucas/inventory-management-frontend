@@ -1,50 +1,46 @@
 <template>
-  <div class="sidebar-container">
-    <Sidebar v-model:visible="visible">
-      <template #container="{ closeCallback }">
-        <div class="sidebar">
-          <span class="close-sidebar-button">
-            <Button
-              type="button"
-              @click="closeCallback"
-              icon="pi pi-times"
-              rounded
-              outlined
-            />
-          </span>
-          <div class="navigation-options">
-            <router-link to="/home">Home</router-link>
-            <router-link to="/product">Products</router-link>
-            <router-link to="/supplier">Suppliers</router-link>
-            <router-link to="/order">Orders</router-link>
-            <router-link to="/manage">Manage User</router-link>
-            <router-link to="/settings">Settings</router-link>
-          </div>
-          <div class="user-info">
-            <div v-if="user.access_token">
-              <div class="logout" @click="requestSignoutUser">Log Out</div>
-              <div class="user-name">
-                <Avatar
-                  :label="user.data.firstName?.slice(0, 1)"
-                  shape="circle"
-                />
-                <span>{{ user.data.firstName }} {{ user.data.lastName }}</span>
-              </div>
-            </div>
-            <div v-else>
-              <Avatar icon="pi pi-user" shape="circle" />
-              <span>
-                <span @click="toSignIn">Sign in</span>
-                or
-                <span @click="toSignUp">Sign up</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </template>
-    </Sidebar>
-    <Button icon="pi pi-arrow-right" @click="visible = true"></Button>
-  </div>
+  <aside :class="`${setIsExpanded}`">
+    <div :class="`sidebar-title ${setIsExpanded}`">
+      <span class="material-icons-outlined">warehouse</span>
+
+      <div class="menu-toggle-wrap">
+        <span v-if="!isExpanded" class="material-icons" @click="toggleMenu"
+          >keyboard_double_arrow_right</span
+        >
+        <span v-else class="material-icons" @click="toggleMenu"
+          >keyboard_double_arrow_left</span
+        >
+      </div>
+    </div>
+
+    <div class="menu">
+      <router-link to="/home" class="button">
+        <span class="material-icons">assessment</span>
+        <span class="text">Dashboard</span>
+      </router-link>
+      <router-link to="/product" class="button">
+        <span class="material-icons">storage</span>
+        <span class="text">Products</span>
+      </router-link>
+      <router-link to="/supplier" class="button">
+        <span class="material-icons">local_shipping</span>
+        <span class="text">Suppliers</span>
+      </router-link>
+      <router-link to="/order" class="button">
+        <span class="material-icons">shopping_bag</span>
+        <span class="text"> Orders</span>
+      </router-link>
+    </div>
+
+    <div class="flex"></div>
+
+    <div class="menu">
+      <router-link to="/settings" class="button">
+        <span class="material-icons">settings</span>
+        <span class="text">Settings</span>
+      </router-link>
+    </div>
+  </aside>
 </template>
 
 <script lang="ts">
@@ -53,25 +49,38 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "IMSidebar",
-  props: ["user"],
+  props: ["user", "setExpandSidebar"],
   data() {
     return {
-      visible: false,
+      isExpanded: false,
     };
+  },
+  updated() {
+    this.isExpanded = localStorage.getItem("isExpanded") === "true";
+    this.setExpandSidebar(this.isExpanded);
+  },
+  computed: {
+    setIsExpanded(): string {
+      return this.isExpanded ? "is-expanded" : "";
+    },
   },
   methods: {
     toSignIn() {
       this.$router.push("/");
-      this.visible = false;
+      this.isExpanded = false;
     },
     toSignUp() {
       this.$router.push("/register");
-      this.visible = false;
+      this.isExpanded = false;
     },
     requestSignoutUser() {
       signOutUser();
       this.$router.push("/");
-      this.visible = false;
+      this.isExpanded = false;
+    },
+    toggleMenu() {
+      this.isExpanded = !this.isExpanded;
+      localStorage.setItem("isExpanded", this.isExpanded.toString());
     },
   },
 });

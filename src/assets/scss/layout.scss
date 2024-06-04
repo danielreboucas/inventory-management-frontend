@@ -10,6 +10,15 @@ body {
 
 .app {
   height: 100%;
+  .main-container {
+    margin-left: calc(2rem + 32px);
+    transition: 0.2s ease-in-out;
+
+    &.is-expanded {
+      margin-left: 250px;
+      transition: 0.2s ease-in-out;
+    }
+  }
 }
 
 @import url("./IMSidebar/IMSidebar.scss");

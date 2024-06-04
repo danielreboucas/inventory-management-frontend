@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 
 import "primevue/resources/themes/aura-light-green/theme.css";
+import "material-icons/iconfont/material-icons.css";
 import "primeicons/primeicons.css";
 import PrimeVue from "primevue/config";
 import Button from "primevue/button";

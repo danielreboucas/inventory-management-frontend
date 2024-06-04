@@ -2,8 +2,10 @@
   <div class="app">
     <Toast />
     <ConfirmDialog />
-    <router-view :user="user" @get-user="requestGetUser" />
-    <IMSidebar :user="user" />
+    <IMSidebar :user="user" :setExpandSidebar="setExpandSidebar" />
+    <div :class="`main-container ${isExpanded ? 'is-expanded' : ''}`">
+      <router-view :user="user" @get-user="requestGetUser" />
+    </div>
   </div>
 </template>
 
@@ -18,9 +20,13 @@ export default defineComponent({
   data() {
     return {
       user: {},
+      isExpanded: false,
     };
   },
   methods: {
+    setExpandSidebar(isExpanded) {
+      this.isExpanded = isExpanded;
+    },
     async requestGetUser() {
       try {
         const response = await getUser();
