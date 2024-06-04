@@ -2,8 +2,16 @@
   <div class="app">
     <Toast />
     <ConfirmDialog />
-    <IMSidebar :user="user" :setExpandSidebar="setExpandSidebar" />
-    <div :class="`main-container ${isExpanded ? 'is-expanded' : ''}`">
+    <IMSidebar
+      v-if="getStoreUser?.access_token"
+      :user="user"
+      :setExpandSidebar="setExpandSidebar"
+    />
+    <div
+      :class="`main-container ${isExpanded ? 'is-expanded' : ''} ${
+        getStoreUser?.access_token ? 'is-logged-in' : ''
+      }`"
+    >
       <router-view :user="user" @get-user="requestGetUser" />
     </div>
   </div>
@@ -13,6 +21,7 @@
 import { getUser } from "@/services/UserService";
 import { IMSidebar } from "@/components/IMSidebar/IMSidebar.vue";
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "App",
@@ -22,6 +31,9 @@ export default defineComponent({
       user: {},
       isExpanded: false,
     };
+  },
+  computed: {
+    ...mapGetters(["getStoreUser"]),
   },
   methods: {
     setExpandSidebar(isExpanded) {

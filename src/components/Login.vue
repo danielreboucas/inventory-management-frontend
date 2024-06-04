@@ -49,7 +49,7 @@ export default defineComponent({
   methods: {
     async requestSignInUser() {
       try {
-        await signInUser({
+        const response = await signInUser({
           email: this.email,
           password: this.password,
         });
@@ -60,6 +60,7 @@ export default defineComponent({
           detail: "Successfully logged in",
           life: 5000,
         });
+        this.$store.dispatch("setUser", response);
         this.$router.push("/home");
       } catch (error: any) {
         this.$toast.add({

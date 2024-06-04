@@ -1,10 +1,10 @@
 <template>
   <aside :class="`${setIsExpanded}`">
-    <div :class="`sidebar-title ${setIsExpanded}`">
-      <span class="material-icons-outlined">warehouse</span>
+    <div class="logo">
+      <span class="logo-icon material-icons-outlined">warehouse</span>
 
       <div class="menu-toggle-wrap">
-        <span v-if="!isExpanded" class="material-icons" @click="toggleMenu"
+        <span v-if="!setIsExpanded" class="material-icons" @click="toggleMenu"
           >keyboard_double_arrow_right</span
         >
         <span v-else class="material-icons" @click="toggleMenu"
@@ -13,6 +13,7 @@
       </div>
     </div>
 
+    <h3>Menu</h3>
     <div class="menu">
       <router-link to="/home" class="button">
         <span class="material-icons">assessment</span>
@@ -30,15 +31,23 @@
         <span class="material-icons">shopping_bag</span>
         <span class="text"> Orders</span>
       </router-link>
+      <router-link to="/settings" class="button">
+        <span class="material-icons">settings</span>
+        <span class="text">Settings</span>
+      </router-link>
     </div>
 
     <div class="flex"></div>
 
     <div class="menu">
-      <router-link to="/settings" class="button">
-        <span class="material-icons">settings</span>
-        <span class="text">Settings</span>
+      <router-link to="/" class="button" @click="requestSignoutUser">
+        <span class="material-icons">logout</span>
+        <div class="text">Log out</div>
       </router-link>
+      <!-- <div class="user-name">
+        <Avatar :label="user.data.firstName?.slice(0, 1)" shape="circle" />
+        <span>{{ user.data.firstName }} {{ user.data.lastName }}</span>
+      </div> -->
     </div>
   </aside>
 </template>
@@ -75,6 +84,7 @@ export default defineComponent({
     },
     requestSignoutUser() {
       signOutUser();
+      this.$store.dispatch("setUser", null);
       this.$router.push("/");
       this.isExpanded = false;
     },

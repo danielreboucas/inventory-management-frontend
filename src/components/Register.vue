@@ -50,7 +50,7 @@ export default defineComponent({
     },
     async requestSignUpUser() {
       try {
-        const user = await signUpUser({
+        await signUpUser({
           email: this.email,
           password: this.password,
           firstName: this.firstName,

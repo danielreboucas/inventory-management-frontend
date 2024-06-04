@@ -1,7 +1,8 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store, { State } from "./store";
+import { Store } from "vuex";
 
 import "primevue/resources/themes/aura-light-green/theme.css";
 import "material-icons/iconfont/material-icons.css";
@@ -32,6 +33,12 @@ import Dropdown from "primevue/dropdown";
 import MultiSelect from "primevue/multiselect";
 
 import IMSidebar from "./components/IMSidebar/IMSidebar.vue";
+
+declare module "@vue/runtime-core" {
+  interface ComponentCustomProperties {
+    $store: Store<State>;
+  }
+}
 
 const app = createApp(App);
 
