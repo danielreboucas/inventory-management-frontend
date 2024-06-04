@@ -1,73 +1,99 @@
 .login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  background-image: linear-gradient(#3b3b3b, white);
-
-  .login {
+  .left {
+    background: url('../../images/Login_image.jpg');
+    background-repeat: no-repeat;
+    width: 35%;
+    position: absolute;
+    left: 0px;
+    height: 100%;
+  }
+  
+  .right {
     display: flex;
+    width: 65%;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    background: var(--floral-white);
+    color: var(--lapis-lazuli);
     flex-direction: column;
-    background: white;
-    color: black;
-    padding: 80px;
-    gap: 16px;
-    margin-top: 200px;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    align-items: center;
+    padding-top: 5%;
 
-    h2 {
+    h1 {
       display: flex;
       justify-content: center;
     }
 
-    .login-inputs {
+    .login {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-    }
-
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .checkbox {
-        label {
-          margin-left: 8px;
-        }
-        font-size: 15px;
-      }
-
-      .forgot-password {
-        font-size: 13px;
-        color: #0c1cab;
-      }
-
-      .forgot-password:hover {
-        color: #0c1cab;
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
-
-    .login-button {
-      display: flex;
       justify-content: center;
-    }
+      padding: 120px 120px 0px 120px;
+      gap: 16px;
+      width: 50%;
 
-    .create-account {
-      display: flex;
-      gap: 8px;
-      font-size: 12px;
-
-      .signup {
-        color: #0c1cab;
-        cursor: pointer;
+      h2 {
+        display: flex;
+        justify-content: center;
       }
 
-      .signup:hover {
-        text-decoration: underline;
+      .login-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .p-password {
+          input {
+            width: 100%;
+          }
+        }
+      }
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .checkbox {
+          label {
+            margin-left: 8px;
+          }
+          font-size: 15px;
+        }
+
+        .forgot-password {
+          font-size: 13px;
+          color: #0c1cab;
+        }
+
+        .forgot-password:hover {
+          color: #0c1cab;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      .login-button {
+        display: flex;
+        justify-content: center;
+        background-color: var(--lapis-lazuli);
+        border-color: var(--lapis-lazuli);
+      }
+
+      .create-account {
+        display: flex;
+        gap: 8px;
+        font-size: 12px;
+
+        .signup {
+          color: #0c1cab;
+          cursor: pointer;
+        }
+
+        .signup:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
