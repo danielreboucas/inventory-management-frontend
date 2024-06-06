@@ -44,10 +44,6 @@
         <span class="material-icons">logout</span>
         <div class="text">Log out</div>
       </router-link>
-      <!-- <div class="user-name">
-        <Avatar :label="user.data.firstName?.slice(0, 1)" shape="circle" />
-        <span>{{ user.data.firstName }} {{ user.data.lastName }}</span>
-      </div> -->
     </div>
   </aside>
 </template>
@@ -55,6 +51,7 @@
 <script lang="ts">
 import { signOutUser } from "@/services/UserService";
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "IMSidebar",
@@ -69,6 +66,7 @@ export default defineComponent({
     this.setExpandSidebar(this.isExpanded);
   },
   computed: {
+    ...mapGetters(["getStoreUser"]),
     setIsExpanded(): string {
       return this.isExpanded ? "is-expanded" : "";
     },

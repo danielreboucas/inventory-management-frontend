@@ -55,6 +55,9 @@ export default defineComponent({
     };
   },
   methods: {
+    moveToRegisterPage() {
+      this.$router.push("/register");
+    },
     async requestSignInUser() {
       try {
         const response = await signInUser({
@@ -78,9 +81,6 @@ export default defineComponent({
           life: 5000,
         });
       }
-    },
-    moveToRegisterPage() {
-      this.$router.push("/register");
     },
   },
 });
