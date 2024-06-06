@@ -1,31 +1,33 @@
 .register-container {
+  width: 100%;
+  height: 100%;
 
   .right {
     background: url('../../images/Signup_image.jpg');
     background-repeat: no-repeat;
-    width: 35%;
+    background-size: cover;
     position: absolute;
-    right: 0px;
+    width: 35%;
     height: 100%;
+    right: 0rem;
   }
   .left {
     display: flex;
-    width: 65%;
     position: absolute;
-    left: 0px;
-    height: 100%;
-    background: var(--floral-white);
-    color: var(--lapis-lazuli);
     flex-direction: column;
     align-items: center;
+    width: 65%;
+    height: 100%;
+    left: 0px;
     padding-top: 5%;
+    background: var(--floral-white);
+    color: var(--lapis-lazuli);
 
     .register {
       display: flex;
       flex-direction: column;
-      padding: 120px 120px 0px 120px;
-      gap: 16px;
-      width: 50%;
+      padding: 7.5rem 7.5rem 0rem 7.5rem;
+      gap: 1rem;
 
       h2 {
         display: flex;
@@ -35,7 +37,7 @@
       .register-inputs {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 0.5rem;
 
         .p-password {
           input {
@@ -53,8 +55,8 @@
 
       .user-signin {
         display: flex;
-        gap: 8px;
-        font-size: 12px;
+        gap: 0.5rem;
+        font-size: 0.75rem;
 
         .signin {
           color: #0c1cab;

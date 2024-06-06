@@ -1,24 +1,28 @@
 .login-container {
+  width: 100%;
+  height: 100%;
   .left {
-    background: url('../../images/Login_image.jpg');
+    display: block;
+    background: url("../../images/Login_image.jpg");
     background-repeat: no-repeat;
-    width: 35%;
+    background-size: cover;
     position: absolute;
-    left: 0px;
+    width: 35%;
     height: 100%;
+    left: 0rem;
   }
-  
+
   .right {
     display: flex;
-    width: 65%;
     position: absolute;
-    right: 0px;
-    height: 100%;
-    background: var(--floral-white);
-    color: var(--lapis-lazuli);
     flex-direction: column;
     align-items: center;
+    width: 65%;
+    height: 100%;
+    right: 0rem;
     padding-top: 5%;
+    background: var(--floral-white);
+    color: var(--lapis-lazuli);
 
     h1 {
       display: flex;
@@ -29,9 +33,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 120px 0px 120px;
-      gap: 16px;
-      width: 50%;
+      padding: 7.5rem 7.5rem 0rem 7.5rem;
+      gap: 1rem;
 
       h2 {
         display: flex;
@@ -41,11 +44,14 @@
       .login-inputs {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 0.5rem;
 
+        .p-inputtext:enabled:focus {
+          outline: 1px solid var(--lapis-lazuli);
+        }
         .p-password {
           input {
-            width: 100%;
+            min-width: 100%;
           }
         }
       }
@@ -56,14 +62,20 @@
         justify-content: space-between;
 
         .checkbox {
+          font-size: 0.9375rem;
+
           label {
-            margin-left: 8px;
+            margin-left: 0.5rem;
           }
-          font-size: 15px;
+
+          .p-checkbox.p-highlight .p-checkbox-box {
+            border-color: var(--lapis-lazuli);
+            background: var(--lapis-lazuli);
+          }
         }
 
         .forgot-password {
-          font-size: 13px;
+          font-size: 0.8125rem;
           color: #0c1cab;
         }
 
@@ -83,8 +95,8 @@
 
       .create-account {
         display: flex;
-        gap: 8px;
-        font-size: 12px;
+        gap: 0.5rem;
+        font-size: 0.75rem;
 
         .signup {
           color: #0c1cab;
