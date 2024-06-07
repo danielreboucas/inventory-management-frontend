@@ -1,5 +1,13 @@
 .im-button {
-  .im-button-success {
+  &.p-button {
+    .icon-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+  }
+  &.im-button-success {
     background-color: var(--button-success);
     border-color: var(--button-success);
 
@@ -9,7 +17,7 @@
     }
   }
 
-  .im-button-danger {
+  &.im-button-danger {
     background-color: var(--button-danger);
     border-color: var(--button-danger);
 

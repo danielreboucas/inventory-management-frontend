@@ -1,23 +1,22 @@
 <template>
-  <div class="im-button">
-    <Button
-      :class="`im-button-${severity}`"
-      :text="text"
-      :iconPos="iconPos"
-      :disabled="disabled"
-      :rounded="rounded"
-      :outlined="outlined"
-    >
-      <div v-if="iconPos !== 'right'">
-        <i :class="icon" />
-        {{ label }}
-      </div>
-      <div v-else>
-        {{ label }}
-        <i :class="icon" />
-      </div>
-    </Button>
-  </div>
+  <Button
+    :class="`im-button im-button-${severity}`"
+    :text="text"
+    :iconPos="iconPos"
+    :disabled="disabled"
+    :rounded="rounded"
+    :outlined="outlined"
+    :size="size"
+  >
+    <div v-if="iconPos !== 'right'" class="icon-label">
+      <i :class="icon" />
+      {{ label ? label : "" }}
+    </div>
+    <div v-else class="icon-label">
+      {{ label ? label : "" }}
+      <i :class="icon" />
+    </div>
+  </Button>
 </template>
 
 <script lang="ts">
@@ -34,6 +33,7 @@ export default defineComponent({
     "disabled",
     "rounded",
     "outlined",
+    "size",
   ],
 });
 </script>
