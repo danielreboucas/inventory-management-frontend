@@ -13,7 +13,6 @@ import InputText from "primevue/inputtext";
 import Password from "primevue/password";
 import FloatLabel from "primevue/floatlabel";
 import Checkbox from "primevue/checkbox";
-import Sidebar from "primevue/sidebar";
 import Avatar from "primevue/avatar";
 import Toast from "primevue/toast";
 import ToastService from "primevue/toastservice";
@@ -32,7 +31,8 @@ import InputIcon from "primevue/inputicon";
 import Dropdown from "primevue/dropdown";
 import MultiSelect from "primevue/multiselect";
 
-import IMSidebar from "./components/IMSidebar/IMSidebar.vue";
+import Sidebar from "./components/Sidebar/Sidebar.vue";
+import IMButton from "./components/IMComponents/IMButton.vue";
 
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
@@ -48,7 +48,6 @@ app.component("InputText", InputText);
 app.component("Password", Password);
 app.component("FloatLabel", FloatLabel);
 app.component("Checkbox", Checkbox);
-app.component("Sidebar", Sidebar);
 app.component("Avatar", Avatar);
 app.component("Toast", Toast);
 app.component("DataTable", DataTable);
@@ -64,7 +63,8 @@ app.component("InputIcon", InputIcon);
 app.component("Dropdown", Dropdown);
 app.component("MultiSelect", MultiSelect);
 
-app.component("IMSidebar", IMSidebar);
+app.component("Sidebar", Sidebar);
+app.component("IMButton", IMButton);
 
 app.directive("tooltip", Tooltip);
 app.use(ToastService);

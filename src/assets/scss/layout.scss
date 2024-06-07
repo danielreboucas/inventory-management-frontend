@@ -21,10 +21,11 @@ body {
 }
 
 @import url("./colors.scss");
-@import url("./IMSidebar/IMSidebar.scss");
+@import url("./Sidebar/Sidebar.scss");
 @import url("./Login/Login.scss");
 @import url("./Register/Register.scss");
 @import url("./Products/CreateEditProductsModal.scss");
 @import url("./Products/ListProducts.scss");
 @import url("./Suppliers/CreateEditSuppliersModal.scss");
 @import url("./Suppliers/ListSuppliers.scss");
+@import url("./IMComponents/IMButton.scss")

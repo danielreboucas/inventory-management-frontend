@@ -3,9 +3,16 @@
     --lapis-lazuli: #325F7B;
     --floral-white: #FFFCF5;
     --stiletto-red: #A4303F;
+    --antique-ruby-red: #7C1F2B;
     --ocean-green: #419D78;
+    --amazon-green: #337C5F;
     --white: white;
     --grey: grey;
     --light-grey: lightgrey;
     --black: black;
+
+    --button-success: var(--ocean-green);
+    --button-success-hover: var(--amazon-green);
+    --button-danger: var(--stiletto-red);
+    --button-danger-hover: var(--antique-ruby-red);
 }

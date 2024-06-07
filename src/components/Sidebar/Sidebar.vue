@@ -54,7 +54,7 @@ import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
-  name: "IMSidebar",
+  name: "Sidebar",
   props: ["user", "setExpandSidebar"],
   data() {
     return {

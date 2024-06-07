@@ -2,7 +2,7 @@
   <div class="app">
     <Toast />
     <ConfirmDialog />
-    <IMSidebar
+    <Sidebar
       v-if="getStoreUser?.access_token"
       :user="user"
       :setExpandSidebar="setExpandSidebar"
@@ -19,13 +19,13 @@
 
 <script>
 import { getUser } from "@/services/UserService";
-import { IMSidebar } from "@/components/IMSidebar/IMSidebar.vue";
+import { Sidebar } from "@/components/Sidebar/Sidebar.vue";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "App",
-  components: { IMSidebar },
+  components: { Sidebar },
   data() {
     return {
       user: {},

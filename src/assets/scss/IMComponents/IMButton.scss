@@ -1,0 +1,21 @@
+.im-button {
+  .im-button-success {
+    background-color: var(--button-success);
+    border-color: var(--button-success);
+
+    &:hover {
+      background-color: var(--button-success-hover);
+      border-color: var(--button-success-hover);
+    }
+  }
+
+  .im-button-danger {
+    background-color: var(--button-danger);
+    border-color: var(--button-danger);
+
+    &:hover {
+      background-color: var(--button-danger-hover);
+      border-color: var(--button-danger-hover);
+    }
+  }
+}
