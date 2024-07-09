@@ -4,6 +4,7 @@ import Home from "@/components/Home.vue";
 import Register from "@/components/Register.vue";
 import ListProducts from "@/components/Products/ListProducts.vue";
 import ListSuppliers from "@/components/Suppliers/ListSuppliers.vue";
+import store from "../store/index";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -53,4 +54,10 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach(async (to, from) => {
+  const userStore = store;
+  if (!userStore.state.user?.access_token && to.name !== "login") {
+    return { name: "login" };
+  }
+});
 export default router;

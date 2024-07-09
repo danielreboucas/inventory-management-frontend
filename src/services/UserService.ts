@@ -1,5 +1,7 @@
 import User from "@/types/User";
 import api from "./api";
+import router from "@/router";
+
 const baseAuthUrl = "auth";
 
 export async function signInUser(
@@ -32,16 +34,8 @@ export async function signUpUser(
 
 export function signOutUser() {
   localStorage.removeItem("user");
-}
-
-export function authHeader() {
-  const user = JSON.parse(localStorage.getItem("user") || '""');
-
-  if (user.user && user.access_token) {
-    return "Bearer " + user.access_token;
-  } else {
-    return "";
-  }
+  localStorage.removeItem("vuex");
+  router.push("/");
 }
 
 export async function getUser() {

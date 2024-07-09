@@ -81,10 +81,9 @@ export default defineComponent({
       this.isExpanded = false;
     },
     requestSignoutUser() {
-      signOutUser();
       this.$store.dispatch("setUser", null);
-      this.$router.push("/");
       this.isExpanded = false;
+      signOutUser();
     },
     toggleMenu() {
       this.isExpanded = !this.isExpanded;
