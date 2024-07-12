@@ -33,7 +33,7 @@ import MultiSelect from "primevue/multiselect";
 
 import Sidebar from "./components/Sidebar/Sidebar.vue";
 import IMButton from "./components/IMComponents/IMButton.vue";
-
+import BarChart from "./components/Charts/BarChart.vue";
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
     $store: Store<State>;
@@ -65,6 +65,7 @@ app.component("MultiSelect", MultiSelect);
 
 app.component("Sidebar", Sidebar);
 app.component("IMButton", IMButton);
+app.component("BarChart", BarChart);
 
 app.directive("tooltip", Tooltip);
 app.use(ToastService);

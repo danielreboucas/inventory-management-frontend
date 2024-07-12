@@ -72,7 +72,7 @@ export default defineComponent({
           life: 5000,
         });
         this.$store.dispatch("setUser", response);
-        this.$router.push("/home");
+        this.$router.push("/dashboard");
       } catch (error: any) {
         this.$toast.add({
           severity: "error",

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Login from "@/components/Login.vue";
-import Home from "@/components/Home.vue";
+import Dashboard from "@/components/Dashboard/Dashboard.vue";
 import Register from "@/components/Register.vue";
 import ListProducts from "@/components/Products/ListProducts.vue";
 import ListSuppliers from "@/components/Suppliers/ListSuppliers.vue";
@@ -18,9 +18,9 @@ const routes: Array<RouteRecordRaw> = [
     component: Register,
   },
   {
-    path: "/home",
-    name: "home",
-    component: Home,
+    path: "/dashboard",
+    name: "dashboard",
+    component: Dashboard,
   },
   {
     path: "/product",
@@ -35,17 +35,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/order",
     name: "order",
-    component: Home,
+    component: Dashboard,
   },
   {
     path: "/manage",
     name: "manage",
-    component: Home,
+    component: Dashboard,
   },
   {
     path: "/settings",
     name: "settings",
-    component: Home,
+    component: Dashboard,
   },
 ];
 

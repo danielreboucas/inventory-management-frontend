@@ -1,0 +1,19 @@
+.dashboard {
+    overflow: hidden;
+    padding: 1.875rem;
+  
+    h1 {
+      margin-bottom: 0.25rem;
+      margin-top: 0.25rem;
+      font-weight: 700;
+      color: var(--lapis-lazuli);
+      padding-left: 1rem
+    }
+
+    .total-sales-expenses {
+        display: flex;
+        gap: 2rem;
+    }
+}
+
+@import url('./DashboardTotalSalesExpense.scss');

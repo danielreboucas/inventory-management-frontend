@@ -32,24 +32,21 @@
             </IconField>
           </div>
           <div class="header-buttons">
-            <Button
-              outlined
+            <IMButton
+              label="Add Product"
               size="small"
+              severity="success"
               icon="pi pi-plus"
               @click="openCreateModal"
-            >
-              Add Product
-            </Button>
-            <Button
-              outlined
+            />
+            <IMButton
+              label="Delete Products"
               severity="danger"
+              icon="pi pi-trash"
               size="small"
-              icon="pi pi-plus"
               :disabled="!selectedProducts || !selectedProducts.length"
-              @click="showConfirmDeleteMultiple"
-            >
-              Delete Products
-            </Button>
+              @click.stop="showConfirmDeleteMultiple"
+            />
           </div>
         </div>
       </template>
@@ -71,20 +68,12 @@
 
       <Column :exportable="false" style="min-width: 8rem">
         <template #body="slotProps">
-          <Button
-            icon="pi pi-pencil"
-            outlined
-            rounded
-            class="mr-2"
-            @click="openEditModal(slotProps.data)"
-          />
-          <Button
-            icon="pi pi-trash"
-            outlined
-            rounded
-            severity="danger"
-            @click="showConfirmDeleteSingle(slotProps.data)"
-          />
+          <Button text class="mr-2" @click="openEditModal(slotProps.data)">
+            <i class="pi pi-pencil" />
+          </Button>
+          <Button text @click="showConfirmDeleteSingle(slotProps.data)">
+            <i class="pi pi-trash" />
+          </Button>
         </template>
       </Column>
     </DataTable>

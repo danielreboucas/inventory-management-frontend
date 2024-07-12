@@ -15,7 +15,7 @@
 
     <h3>Menu</h3>
     <div class="menu">
-      <router-link to="/home" class="button">
+      <router-link to="/dashboard" class="button">
         <span class="material-icons">assessment</span>
         <span class="text">Dashboard</span>
       </router-link>

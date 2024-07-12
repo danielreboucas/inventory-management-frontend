@@ -1,0 +1,19 @@
+.total-sales-expense-card {
+    background-color: var(--link-water);
+    color: var(--black);
+    width: fit-content;
+    padding: 2rem;
+    border-radius: 8px;
+
+    .expenses {
+        h3 {
+            color: var(--antique-ruby-red)
+        }
+    }
+
+    .sales {
+        h3 {
+            color: var(--ocean-green)
+        }
+    }
+}
