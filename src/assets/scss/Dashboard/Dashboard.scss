@@ -1,19 +1,62 @@
 .dashboard {
-    overflow: hidden;
-    padding: 1.875rem;
-  
-    h1 {
-      margin-bottom: 0.25rem;
-      margin-top: 0.25rem;
-      font-weight: 700;
-      color: var(--lapis-lazuli);
-      padding-left: 1rem
+  overflow: hidden;
+  padding: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  h1 {
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+    font-weight: 700;
+    color: var(--lapis-lazuli);
+    padding-left: 1rem;
+  }
+
+  .sales-informations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    .p-card {
+      min-height: max-content;
+      .p-card-body {
+        .p-card-title {
+          display: flex;
+          gap: 0.5rem;
+        }
+      }
     }
 
-    .total-sales-expenses {
+    .sales, .profit {
+      .p-card-content {
+        color: var(--ocean-green);
+      }
+    }
+    .expenses {
+      .p-card-content {
+        color: var(--stiletto-red);
+      }
+    }
+  }
+
+  .dashboard-charts {
+    display: flex;
+    gap: 2rem;
+
+    .sales-purchases-chart,
+    .sales-overview-chart {
+      max-width: 50%;
+      min-width: 50%;
+
+      h3 {
+        font-weight: 700;
+        color: var(--lapis-lazuli);
         display: flex;
-        gap: 2rem;
-    }
-}
+        justify-content: space-between;
 
-@import url('./DashboardTotalSalesExpense.scss');
+
+      }
+    }
+  }
+}

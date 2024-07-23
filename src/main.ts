@@ -30,10 +30,13 @@ import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import Dropdown from "primevue/dropdown";
 import MultiSelect from "primevue/multiselect";
+import Card from "primevue/card";
 
 import Sidebar from "./components/Sidebar/Sidebar.vue";
 import IMButton from "./components/IMComponents/IMButton.vue";
 import BarChart from "./components/Charts/BarChart.vue";
+import LineChart from "./components/Charts/LineChart.vue";
+
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
     $store: Store<State>;
@@ -62,10 +65,12 @@ app.component("IconField", IconField);
 app.component("InputIcon", InputIcon);
 app.component("Dropdown", Dropdown);
 app.component("MultiSelect", MultiSelect);
+app.component("Card", Card);
 
 app.component("Sidebar", Sidebar);
 app.component("IMButton", IMButton);
 app.component("BarChart", BarChart);
+app.component("LineChart", LineChart);
 
 app.directive("tooltip", Tooltip);
 app.use(ToastService);
